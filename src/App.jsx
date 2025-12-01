@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Home from './pages/Home'
 import Wishlist from './pages/Wishlist'
+import AboutID from './pages/AboutID'
 
 const App = () => {
     const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const App = () => {
                 {
                     path:"/wishlist",
                     element: <Wishlist />
+                },
+                {
+                    path:"/products/:id",
+                    element: <AboutID />
                 }
             ]
         }

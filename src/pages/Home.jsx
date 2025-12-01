@@ -1,12 +1,10 @@
 import { Button, Carousel, message, Space } from 'antd';
 import axios from 'axios';
 import  { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 const Home = () => {
     const [data, setData] = useState([])
   const [messageApi, contextHolder] = message.useMessage()
-  const [second, setSecond] = useState(null)
-  const [minut, setMinut] = useState(null)
-  const [hour, setHour] = useState(null)
     const [category, setCategory] = useState([])
     async function getCategory() {
         try {
@@ -27,17 +25,14 @@ const Home = () => {
         }
     }    
     function addToWish(id) {
-        if (!id && id !== 0) return
-        const raw = localStorage.getItem("id")
+        const idx = localStorage.getItem("id")
         let arr = []
-        if (raw) {
             try {
-                const parsed = JSON.parse(raw)
-                arr = Array.isArray(parsed) ? parsed : [parsed]
+                const item = JSON.parse(idx)
+                arr = Array.isArray(item) ? item : [item]
             } catch {
-                arr = [raw]
+                arr = [idx]
             }
-        }
         arr.push(id)
         localStorage.setItem("id", JSON.stringify(arr))
         messageApi.success("Added to wishlist")
@@ -192,7 +187,6 @@ useEffect(() => {
       <div className="product-image">
         <img
           src={`http://37.27.29.18:8002/images/${e.image}`}
-          alt={e.productName}
         />
       </div>
       <div className="product-info">
@@ -221,6 +215,7 @@ useEffect(() => {
           >
             + Add to wish
           </Button>
+           <Link to={`/products/${e.id}`}>Info</Link>
         </Space>
       </div>
     </div>
@@ -236,29 +231,29 @@ useEffect(() => {
 </div>
 <div className="carts p-4">
   <div className="cart">
-    <img src="../../image copy 8.png" alt="" />
+    <img src="../../image copy 8.png" />
     <h1>Phones</h1>
   </div>
     <div className="df">
   <div className="cart">
-    <img src="../../image copy 10.png" alt="" />
+    <img src="../../image copy 10.png" />
     <h1>Computers</h1>
     </div>
   </div>
   <div className="cart">
-    <img src="../../image copy 11.png" alt="" />
+    <img src="../../image copy 11.png" />
     <h1>Smartwatches</h1>
   </div>
   <div className="cartt">
-    <img src="../../image copy 9.png" alt="" />
+    <img src="../../image copy 9.png" />
     <h1>Camera</h1>
   </div>
   <div className="cart">
-    <img src="../../image copy 12.png" alt="" />
+    <img src="../../image copy 12.png" />
     <h1>Headphones</h1>
   </div>
   <div className="cart">
-    <img src="../../image copy 13.png" alt="" />
+    <img src="../../image copy 13.png" />
     <h1>Gaming</h1>
   </div>
 </div>
@@ -304,6 +299,8 @@ useEffect(() => {
           >
             + Add to wish
           </Button>
+           <Link to={`/products/${e.id}`}>Info</Link>
+
         </Space>
       </div>
     </div>
@@ -352,6 +349,8 @@ useEffect(() => {
           >
             + Add to wish
           </Button>
+           <Link to={`/products/${e.id}`}>Info</Link>
+
         </Space>
       </div>
     </div>
@@ -390,6 +389,8 @@ useEffect(() => {
           >
             + Add to wish
           </Button>
+           <Link to={`/products/${e.id}`}>Info</Link>
+
         </Space>
       </div>
     </div>
@@ -404,13 +405,13 @@ useEffect(() => {
 </svg>
 <h1 className='lar'>New arrival</h1>
 <div className='flex mx justify-center gap-5 med dnm'>
-  <img src="../../image copy 14.png" width="570px" alt="" />
+  <img src="../../image copy 14.png" width="570px" />
   <div>
-    <img src="../../image copy 15.png" width="570px" alt="" />
+    <img src="../../image copy 15.png" width="570px" />
     <p className='leading-8'> </p>
 <div className='flex mx justify-between'>
-    <img src="../../image copy 16.png" width="270px" alt="" />
-    <img src="../../image copy 17.png" width="270px" alt="" />
+    <img src="../../image copy 16.png" width="270px" />
+    <img src="../../image copy 17.png" width="270px" />
 </div>
   </div>
 </div>
@@ -418,17 +419,17 @@ useEffect(() => {
   <div className="mx h-[281px] hdd">
     <div className="pt-20 flex mdd justify-center gap-[88px]">
       <div className="text-center w-[250px]">
-        <img width="80px" className='m-auto' src="../../image copy 18.png" alt="" />
+        <img width="80px" className='m-auto' src="../../image copy 18.png" />
         <h1>Free and fast delivery</h1>
         <p className='text-gray-500 '>Free delivery for all orders over $140</p>
       </div>
       <div className="text-center w-[250px]">
-        <img width="80px" className='m-auto' src="../../image copy 18.png" alt="" />
+        <img width="80px" className='m-auto' src="../../image copy 18.png" />
         <h1>Free and fast delivery</h1>
         <p className='text-gray-500 '>Free delivery for all orders over $140</p>
       </div>
       <div className="text-center w-[250px]">
-        <img width="80px" className='m-auto' src="../../image copy 18.png" alt="" />
+        <img width="80px" className='m-auto' src="../../image copy 18.png" />
         <h1>Free and fast delivery</h1>
         <p className='text-gray-500 '>Free delivery for all orders over $140</p>
       </div>
