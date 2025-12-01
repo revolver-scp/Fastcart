@@ -97,7 +97,7 @@ const AboutID = () => {
             </div>
             <img src="../../Frame 907.png" width="41px"/>
           </div>
-          <img src="../../Button.png" />
+          <img onClick={() => window.location = '/checkout'} src="../../Button.png" />
         </div>
         <img width="399px" src="../../Frame 911.png"/>
         </div>
