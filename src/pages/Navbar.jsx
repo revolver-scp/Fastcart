@@ -3,10 +3,13 @@ import Footer from './Footer';
 import { Button, message, Modal, Space } from 'antd';
 import {  useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { increaseProduct, reduceProduct } from '../Reducers/authSlice';
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setModal] = useState(false);
   const [cart, setCart] = useState([]) 
+  const dispatch = useDispatch()
   const [total, setTotal] = useState(0)
   const [messageApi, contextHolder] = message.useMessage()
   const openModal = () => setIsModalOpen(true);
@@ -73,10 +76,12 @@ const Navbar = () => {
           return(
             <>
           <div style={{display:"flex", justifyContent:"space-between", borderBottom:"1px solid gray", padding:"5px"}} key={e.product.id}>
-            <h1>{e.product.productName}</h1>
+            <h1>{e.product.productName} x{e.quantity}</h1>
             <div style={{display:"flex", alignItems:"center", gap:"5px"}}>
-            <h1>${e.product.price}</h1>
+            <h1>${e.product.price} </h1>
             <Button onClick={() => deleteCart(e.id)} danger>X</Button>
+            <Button onClick={() => [dispatch(increaseProduct(e.id)), setTimeout(() => getCart(), 300)]}>+</Button>
+            <Button onClick={() => [dispatch(reduceProduct(e.id)), setTimeout(() => getCart(), 300)]}>-</Button>
             </div>
           </div>
           
