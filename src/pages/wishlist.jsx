@@ -1,5 +1,4 @@
 import { Button, message, Space } from "antd";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import "../../src/index.css";
 import { axiosRequest } from "../ultis/axiosReques";
@@ -17,7 +16,7 @@ const Wishlist = () => {
     }
     const token = localStorage.getItem("token");
     try {
-      const res = wishlist.map((id) =>
+      const res = wishlist?.map((id) =>
         axiosRequest.get(
           `http://37.27.29.18:8002/Product/get-product-by-id?id=${id}`,
           {
@@ -26,7 +25,7 @@ const Wishlist = () => {
         )
       );
       const responses = await Promise.all(res);
-      const products = responses.map((e) => e.data?.data).filter(Boolean);
+      const products = responses.map((e) => e?.data?.data).filter(Boolean);
       setData(products);
     } catch (error) {
       setData([]);

@@ -9,6 +9,7 @@ import {
 } from "../Reducers/cartSlice";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API } from "../ultis/axiosReques";
 const Cart = () => {
   const { products: cart, total } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Cart = () => {
                 <Space>
                   <img
                     style={{ width: "50px", objectFit:"cover" }}
-                    src={`http://37.27.29.18:8002/images/${e.product.image}`}
+                    src={`${API}/images/${e.product.image}`}
                     alt=""
                   />
                   <div>

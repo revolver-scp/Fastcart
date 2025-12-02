@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosRequest } from "../ultis/axiosReques";
 const Home = () => {
-  const API = import.meta.env.VITE_API_KEY
+  const API = import.meta.env.VITE_API_KEY;
   const [data, setData] = useState([]);
   const [messageApi, contextHolder] = message.useMessage();
   const [category, setCategory] = useState([]);
@@ -21,12 +21,9 @@ const Home = () => {
   }
   async function getData() {
     try {
-      let { data } = await axiosRequest.get(
-        `${API}/Product/get-products`,
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      );
+      let { data } = await axiosRequest.get(`${API}/Product/get-products`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
       setData(data.data.products);
       console.log(data);
     } catch (error) {
@@ -35,15 +32,15 @@ const Home = () => {
   }
   function addToWish(id) {
     const idx = localStorage.getItem("id");
-    let arr = [];
+    let wishlist;
     try {
-      const item = JSON.parse(idx);
-      arr = Array.isArray(item) ? item : [item];
+      wishlist = JSON.parse(idx);
+      if (!Array.isArray(wishlist)) wishlist = [];
     } catch {
-      arr = [idx];
+      wishlist = [];
     }
-    arr.push(id);
-    localStorage.setItem("id", JSON.stringify(arr));
+    wishlist.push(id);
+    localStorage.setItem("id", JSON.stringify(wishlist));
     messageApi.success("Added to wishlist");
   }
   async function addToCart(id) {
@@ -105,7 +102,6 @@ const Home = () => {
       <div className="mx" style={{ display: "flex" }}>
         {contextHolder}
         <div className="categ">
-          <h1 style={{ fontSize: "30px" }}>Categories:</h1>
           {category?.map((e) => (
             <div key={e.id}>
               <p style={{ fontWeight: "400" }}>{e.brandName}</p>
@@ -314,10 +310,7 @@ const Home = () => {
           {data.slice(4).map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
-                <img
-                  src={`${API}/images/${e.image}`}
-                  alt={e.productName}
-                />
+                <img src={`${API}/images/${e.image}`} alt={e.productName} />
               </div>
               <div className="product-info">
                 <h3 className="product-name">{e.productName}</h3>
@@ -371,10 +364,7 @@ const Home = () => {
           {data.map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
-                <img
-                  src={`${API}/images/${e.image}`}
-                  alt={e.productName}
-                />
+                <img src={`${API}/images/${e.image}`} alt={e.productName} />
               </div>
               <div className="product-info">
                 <h3 className="product-name">{e.productName}</h3>
@@ -408,10 +398,7 @@ const Home = () => {
           {data.slice(10).map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
-                <img
-                  src={`${API}/images/${e.image}`}
-                  alt={e.productName}
-                />
+                <img src={`${API}/images/${e.image}`} alt={e.productName} />
               </div>
               <div className="product-info">
                 <h3 className="product-name">{e.productName}</h3>
