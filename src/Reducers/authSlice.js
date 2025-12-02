@@ -10,17 +10,14 @@ export const registerUser = createAsyncThunk(
     return data;
   }
 );
-export const loginUser = createAsyncThunk(
-  "auth/loginUser",
-  async (user) => {
-    const { data } = await axios.post(
-      "http://37.27.29.18:8002/Account/login",
-      user
-    );
-    localStorage.setItem("token", data.data);
-    return data.data;
-  }
-);
+export const loginUser = createAsyncThunk("auth/loginUser", async (user) => {
+  const { data } = await axios.post(
+    "http://37.27.29.18:8002/Account/login",
+    user
+  );
+  localStorage.setItem("token", data.data);
+  return data.data;
+});
 const authSlice = createSlice({
   name: "auth",
   initialState: {

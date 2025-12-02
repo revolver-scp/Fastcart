@@ -1,7 +1,7 @@
 import { message } from 'antd';
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { registerUser } from "../Reducers/authSlice";
+import { registerUser } from "../reducers/authSlice";
 const SignUp = () => {
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();

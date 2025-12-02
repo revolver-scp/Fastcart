@@ -86,7 +86,8 @@ body {
 }
 
 .foter {
-  max-width: 1400px;
+  max-width: 1200px;
+  margin: auto ;
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
@@ -195,7 +196,10 @@ body {
   margin: 0 8px;
   animation: blink 1.4s infinite;
 }
-
+.images{
+  display: flex;
+  gap: 30px;
+}
 .nav {
   position: sticky;
   top: 0;
@@ -203,6 +207,7 @@ body {
   z-index: 1000;
   transition: all 0.3s;
   width: 1440px;
+  margin: auto;
   padding: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -461,6 +466,7 @@ body {
     padding: 14px 20px;
     width: 98% !important;
     max-width: 100% !important;
+    margin: auto;
     .ca {
       width: 56px !important;
     }
@@ -536,6 +542,13 @@ body {
   }
   .dnm {
     display: none;
+  } .flx{
+    flex-direction: column;
+    justify-self: center;
+  }.dns{
+    display: none;
+  }.images{
+    flex-direction: column;
   }
   .mdd {
     flex-direction: column !important;
