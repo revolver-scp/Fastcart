@@ -11,6 +11,7 @@ import AboutID from "./pages/AboutID";
 import Checkout from "./pages/Checkout";
 import Cart from "./pages/Cart";
 import Products from "./pages/Products";
+import Account from "./pages/account";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -61,6 +62,10 @@ const App = () => {
         {
           path: "/products",
           element: <Products />
+        },
+        {
+          path: "/account",
+          element: <Account />
         }
       ],
     },

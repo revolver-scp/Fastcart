@@ -288,7 +288,7 @@ body {
   flex-wrap: wrap;
   gap: 24px;
   padding: 24px;
-  justify-content: center;
+  justify-self: center;
 }
 .product-card {
   width: 300px;

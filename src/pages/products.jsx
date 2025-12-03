@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get, getsubCategory } from "../Reducers/getFilter";
+import { get, getBrand, getCategory, getsubCategory } from "../Reducers/getFilter";
 import { Button, Space } from "antd";
 import { API } from "../ultis/axiosReques";
 import { Link } from "react-router-dom";
 const Products = () => {
   const [data, setData] = useState({})
-  const { category, subCategor, brand, products, subcat } = useSelector(
+  const { category,brandMap, subCategor, brand, products, subcat, categ } = useSelector(
     (state) => state.get
   );
   const dispatch = useDispatch();
@@ -15,24 +15,36 @@ const Products = () => {
   }, []);
   useEffect(() => {
     setData(products)
-  }, [])
+  }, [products])
   const categBu = (id) => {
-    try {
       dispatch(getsubCategory(id))
-    } catch (error) {
-      console.error(error);
-    } finally{
-      setData(subcat)
-    }
   }
+  const categeryGET = (id) => {
+    dispatch(getCategory(id))
+  } 
+  const brandGET = (id) => {
+    dispatch(getBrand(id))
+  } 
+  useEffect(() => {
+    setData(subcat)
+  }, [subcat])
+  useEffect(() => {
+    setData(categ)
+  }, [categ])
+  useEffect(() => {
+    setData(brandMap)
+  }, [brandMap])
   return (
     <>
       <div
         style={{
           display: "flex",
-          justifyContent: "space-between",
+          gap:"25px",
           maxWidth: "1300px",
           margin: "auto",
+          justifyContent:"space-between",
+          justifySelf:"center",
+          alignItems:"start"
         }}
       >
         <div className="filters">
@@ -40,7 +52,7 @@ const Products = () => {
 
             <h1 className="lar">Brands</h1>
             {brand?.map((e) => (
-                <h1>{e.brandName}</h1>
+                <h1 onClick={() => brandGET(e.id)}>{e.brandName}</h1>
             ))}
             <hr />
             <h1 className="lar">Category</h1>
@@ -52,7 +64,7 @@ const Products = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <h1>{e.categoryName}</h1>
+                <h1 onClick={() => categeryGET(e.id)}>{e.categoryName}</h1>
                 <img
                   width="40px"
                   style={{ objectFit: "cover" }}
@@ -67,8 +79,9 @@ const Products = () => {
             ))}
           </Space>
         </div>
-        <div className="products-grid">
-          {products?.products?.map((e) => {
+        <div className="products-grid w-[1000px]">
+          { Array.isArray(data) ? (
+          data?.map((e) => {
             return (
               <div key={e.id} className="product-card ">
                 <div className="product-image">
@@ -107,7 +120,48 @@ const Products = () => {
                 </div>
               </div>
             );
-          })}
+          })) : (
+            data?.products?.map((e) => {
+            return (
+              <div key={e.id} className="product-card ">
+                <div className="product-image">
+                  <img src={`${API}/images/${e.image}`} />
+                </div>
+                <div className="product-info">
+                  <h3 className="product-name">{e.productName}</h3>
+                  <div className="price-row">
+                    <>
+                      <span className="discount-price">{e.discountPrice}%</span>
+                      <Space style={{ paddingRight: "45px" }}>
+                        <span className="original-price1">
+                          ${e.discountPrice}
+                        </span>
+                        <span className="original-price">${e.price}</span>
+                      </Space>
+                    </>
+                  </div>
+                  <Space
+                    className="card-actions"
+                    orientation="vertical"
+                    size={10}
+                  >
+                    <Button
+                      type="primary"
+                      block
+                      onClick={() => addToCart(e.id)}
+                    >
+                      + Add to cart
+                    </Button>
+                    <Button type="dashed" block onClick={() => addToWish(e.id)}>
+                      + Add to wish
+                    </Button>
+                    <Link to={`/products/${e.id}`}>Info</Link>
+                  </Space>
+                </div>
+              </div>
+            );
+          })
+          )}
         </div>
       </div>
     </>

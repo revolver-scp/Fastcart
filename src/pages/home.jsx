@@ -110,7 +110,7 @@ const Home = () => {
         </div>
         <Carousel
           className="car"
-          style={{ width: "892px", height: "344px" }}
+          style={{ width: "892px", height: "344px", borderRadius:"8px" }}
           autoplay
           infinite
           dots
