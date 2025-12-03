@@ -10,8 +10,8 @@ import Wishlist from "./pages/wishlist";
 import AboutID from "./pages/aboutID";
 import Checkout from "./pages/checkout";
 import Cart from "./pages/cart";
-import Products from "./pages/products";
 import Account from "./pages/account";
+import Products from "./pages/Products";
 
 const App = () => {
   const router = createBrowserRouter([
