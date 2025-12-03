@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "./footer";
 import { Modal, Space } from "antd";
 import { useState } from "react";
 const Navbar = () => {
