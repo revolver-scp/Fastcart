@@ -6,7 +6,6 @@ import { axiosRequest } from "../ultis/axiosReques";
 const AboutID = () => {
   const API = import.meta.env.VITE_API_KEY
   const [data, setData] = useState({});
-  const [messageApi, contextHolder] = message.useMessage();
   const { id } = useParams();
   const navigate = useNavigate();
   async function getData(id) {
@@ -14,6 +13,7 @@ const AboutID = () => {
       let { data } = await axiosRequest.get(
         `${API}/Product/get-product-by-id?id=${id}`
       );
+      console.log(data)
       setData(data);
     } catch (error) {
       console.error(error);
@@ -24,7 +24,6 @@ const AboutID = () => {
   }, []);
   return (
     <div className="mx">
-      {contextHolder}
       <div className="images">
           <Space orientation="vertical">
             <img
