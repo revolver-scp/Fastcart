@@ -11,7 +11,7 @@ import AboutID from "./pages/aboutID";
 import Checkout from "./pages/checkout";
 import Cart from "./pages/cart";
 import Account from "./pages/account";
-import Products from "./pages/Products";
+import Products from "./pages/products";
 
 const App = () => {
   const router = createBrowserRouter([
