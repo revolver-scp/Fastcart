@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <>
       <Modal
-        width={180}
+        width={280}
         title={<span style={{ fontSize: "34px" }}>Go To</span>}
         open={isModalOpen}
         onCancel={closeModal}
@@ -35,6 +35,9 @@ const Navbar = () => {
           <Link className="link" to="/cart" onClick={closeModal}>
             Cart
           </Link>
+          <Link className="link" to="/products" onClick={closeModal}>
+            Products
+          </Link>
         </Space>
       </Modal>
       <div className="nav">
@@ -47,6 +50,7 @@ const Navbar = () => {
             <Link to="/contact">Contact</Link>
             <Link to="/about">About</Link>
             <Link to="/home">Home</Link>
+            <Link to="/products">Products</Link>
           </Space>
         </div>
         <div>
