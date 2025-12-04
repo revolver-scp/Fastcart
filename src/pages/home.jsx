@@ -209,7 +209,7 @@ const Home = () => {
         </div>
       </div>
       <div className="products-grid">
-        {data.map((e) => (
+        {data.slice(0, 4).map((e) => (
           <div key={e.id} className="product-card ">
             <div className="product-image">
               <img src={`${API}/images/${e.image}`} />
@@ -307,7 +307,7 @@ const Home = () => {
         </svg>
         <h1 className="lar">Best Selling Products</h1>
         <div className="products-grid">
-          {data.map((e) => (
+          {data.slice(0,4).map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
                 <img src={`${API}/images/${e.image}`} alt={e.productName} />
@@ -361,7 +361,7 @@ const Home = () => {
         </svg>
         <h1 className="lar">Explore our products</h1>
         <div className="products-grid ">
-          {data.map((e) => (
+          {data.slice(0, 4).map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
                 <img src={`${API}/images/${e.image}`} alt={e.productName} />
@@ -395,7 +395,7 @@ const Home = () => {
               </div>
             </div>
           ))}
-          {data.map((e) => (
+          {data.slice(0, 4).map((e) => (
             <div key={e.id} className="product-card ">
               <div className="product-image">
                 <img src={`${API}/images/${e.image}`} alt={e.productName} />
