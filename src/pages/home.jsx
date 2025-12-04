@@ -54,7 +54,7 @@ const Home = () => {
       );
       messageApi.success("Added to cart");
     } catch (error) {
-      messageApi.error("Product is already in cart!");
+      messageApi.error("Product is in cart or Not authorized!");
       console.error(error);
     }
   }
