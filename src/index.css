@@ -87,7 +87,7 @@ body {
 
 .foter {
   max-width: 1200px;
-  margin: auto ;
+  margin: auto;
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
@@ -196,7 +196,7 @@ body {
   margin: 0 8px;
   animation: blink 1.4s infinite;
 }
-.images{
+.images {
   display: flex;
   gap: 30px;
 }
@@ -542,12 +542,15 @@ body {
   }
   .dnm {
     display: none;
-  } .flx{
+  }
+  .flx {
     flex-direction: column;
     justify-self: center;
-  }.dns{
+  }
+  .dns {
     display: none;
-  }.images{
+  }
+  .images {
     flex-direction: column;
   }
   .mdd {
@@ -582,5 +585,18 @@ body {
   .countdown {
     width: 200px;
     margin: auto;
+  }
+  .filters {
+    img {
+      width: 30px !important;
+    } div{
+      width: 130px;
+    }
+    cursor: pointer;
+    .bh {
+      flex-direction: column;
+    }
+  } .lar{
+    font-size: 20px;
   }
 }

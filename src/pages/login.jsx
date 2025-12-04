@@ -1,7 +1,7 @@
 import { message } from "antd";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../reducers/authSlice";
+import { loginUser } from "../Reducers/authSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
